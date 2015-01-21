@@ -35,8 +35,10 @@ var badges = {
 var getProjects = function(timer) {
 	var date = new Date();
 
-	if(!timer && cache('last_request') && (date.getTime() - (cache('last_request') + 0)) < windowRequest)
-		return fromCache();
+	if(!timer) {
+		if(cache('last_request') && (date.getTime() - parseInt(cache('last_request'),10)) < windowRequest)
+			return fromCache();
+	}
 
 	badges.clear();
 
