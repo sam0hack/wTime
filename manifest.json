@@ -2,7 +2,7 @@
 	"name": "wTime",
 	"short_name": "wTime",
 	"manifest_version": 2,
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Waka Time Projects Monitor",
 	"browser_action": {
 		"default_icon": "48.png",

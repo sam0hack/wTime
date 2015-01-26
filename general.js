@@ -33,9 +33,10 @@ var badges = {
 };
 
 var getProjects = function(timer) {
-	var date = new Date();
+	var date = new Date(),
+		fCache = cache('html');
 
-	if(!timer) {
+	if(!timer && fCache) {
 		if(cache('last_request') && (date.getTime() - parseInt(cache('last_request'),10)) < windowRequest)
 			return fromCache();
 	}
@@ -76,7 +77,7 @@ var getProjects = function(timer) {
 					console.log(e);
 					return;
 				}
-				showProjects(data.data[0].projects);
+				showProjects(data.data[0]);
 
 			}
 			else if(this.status === 403) {

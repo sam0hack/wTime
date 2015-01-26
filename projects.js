@@ -1,6 +1,16 @@
-var showProjects = function(projects) {
+var showProjects = function(data) {
 	'use strict';
-	var html = '<ul>' + projects.sort(function(a, b) {
+	var html;
+	data.projects.length = data.grand_total.total_seconds = 0;
+	if(!data.projects.length && !data.grand_total.total_seconds) {
+		console.log(data);
+		cache('html', null);
+		html = '<p class="noprojects">You don\'t worked today, yet.<br> <a href="https://wakatime.com/dashboard" target="_blank">You can check all your data at wakatime.com</a>.</p>';
+		document.querySelector('.loader').style.display = 'none';
+		document.querySelector('.container').innerHTML = html;
+		return;
+	}
+	html = '<ul>' + data.projects.sort(function(a, b) {
 		return a.name.toLowerCase().charCodeAt(0) - b.name.toLowerCase().charCodeAt(0);
 	}).map(function(project) {
 		var name = project.name,
