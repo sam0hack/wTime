@@ -1,7 +1,6 @@
 var showProjects = function(data) {
 	'use strict';
 	var html;
-	data.projects.length = data.grand_total.total_seconds = 0;
 	if(!data.projects.length && !data.grand_total.total_seconds) {
 		console.log(data);
 		cache('html', null);
